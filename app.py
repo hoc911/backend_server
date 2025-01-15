@@ -3,12 +3,13 @@ from flask_cors import CORS
 import os
 
 from crew import crew  # استيراد كائن Crew الخاص بك
-from custom_agent import get_gemini_response
 
 app = Flask(__name__)
 
 # **هام:** قم بتحديث `origins` بعنوان URL لخادم الواجهة الأمامية الخاص بك
-CORS(app, resources={r"/upload": {"origins": "https://your-frontend-server.com"}})
+# إذا كنت تقوم بتشغيل الواجهة الأمامية محليًا أثناء التطوير، فاستخدم هذا:
+CORS(app, resources={r"/upload": {"origins": "http://localhost:5500"}})
+# إذا كانت الواجهة الأمامية على نطاق مختلف، فاستبدل "http://localhost:5500" بنطاقها.
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -23,6 +24,7 @@ def upload_file():
         file.save(image_path)
 
         # الحصول على الوصف من Gemini
+        from custom_agent import get_gemini_response
         response_from_gemini = get_gemini_response(image_path)
 
         # تشغيل عملية CrewAI

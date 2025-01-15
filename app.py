@@ -1,10 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import sys
 import os
-
-# إضافة المسار الرئيسي للمشروع إلى مسار بايثون
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from crew import crew  # استيراد كائن Crew الخاص بك
 from custom_agent import get_gemini_response

@@ -4,4 +4,4 @@ python-dotenv
 langchain-google-genai
 crewai
 google-generativeai
-gunicorn  # <-- تأكد من وجود هذا السطر
+gunicorn

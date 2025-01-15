@@ -29,7 +29,7 @@ def get_gemini_response(file_path):
   }
 
   model = genai.GenerativeModel(
-    model_name="gemini/gemini-2.0-flash-thinking-exp-1219",
+    model_name="gemini-2.0-flash-thinking-exp-1219",
     generation_config=generation_config,
   )
 
